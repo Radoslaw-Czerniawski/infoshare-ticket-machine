@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+.wrapper {
+    width: 90vw;
+    margin: 10px auto;
+    padding-bottom: 300px;
+}
+
+.container3 {
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.display-button {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    font-size: 80px;
+    width: 110px;
+    height: 80px;
+    background-color: white;
+    color: grey;
+    border: #DBDBDB 2px solid;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.display-button:hover {
+    background-color: #00D1B2;
+    color: white;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #DBDBDB;
+    height: 300px;
+    position: fixed;
+    bottom: 0;
+    border-radius: 20px;
+    padding-left: 400px;
+    padding-right: 900px;
+}
+
+.footer-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-wrapper {
+    width: 90%;
+    user-select: none;
+}
+
+.exit-button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -40px;
+    top: -40px;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    color: grey;
+    background-color: white;
+    border: 2px solid #DBDBDB;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.backspace-button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -40px;
+    top: 40px;
+    width: 100px;
+    height: 50px;
+    font-size: 25px;
+    color: grey;
+    background-color: white;
+    border: 2px solid #DBDBDB;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.backspace-button:hover {
+    background-color: #00D1B2;
+    color: white
+}
+
+.exit-button:hover {
+    background-color: #00D1B2;
+    color: white;
+}
+
+.hide {
+    display: none;
+    right: 200px;
+}
+
+@media (max-width: 1010px) {
+    .buttons-wrapper .mm {
+        padding: 1%;
+    }
+}

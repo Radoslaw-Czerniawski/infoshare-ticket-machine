@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/3b77528863.js" crossorigin="anonymous"></script>
+    <title>Ticket Machine</title>
+</head>
+<body>
+    <div class="wrapper is-flex is-flex-direction-column ">
+        <input class="input is-medium" type="search" placeholder="Search city">
+
+        <div class="container3 is-size-4 mt-2">
+            <table class="table is-bordered">
+                <thead>
+                    <tr>
+                        <th>Total:</th>
+                        <th>0</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class="is-flex pt-1 is-size-5 is-justify-content-space-around">
+            <div class="column pl-2 pt-2 is-three-fifths">
+                <button class="button is-primary is-outlined is-loading">Button</button>
+
+                <div class="container">
+                </div>
+            </div>
+
+            <div class="column pl-2 pt-2 is-two-fifths">
+                <div class="container2">
+                    <div>
+                        <table class="table is-fullwidth is-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <i class="icon fas fa-shopping-cart"></i>
+                                        Cart
+                                    </th>
+
+                                    <th class="is-narrow">Tickets</th>
+
+                                    <th class="is-narrow">Price $</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="display-button is-flex is-align-items-center is-justify-content-center">
+            <i class="far fa-keyboard"></i>
+        </div>
+    </div>
+
+    <footer class="footer p-6 hide">
+        <div class="footer-wrapper">
+            <div class="exit-button">
+                <i class="fas fa-times"></i>
+            </div>
+
+            <div class="backspace-button">
+                <i class="fas fa-backspace"></i>
+            </div>
+
+            <div class="buttons-wrapper"></div>
+        </div>
+    </footer>
+
+
+
+<script type="module">
+    import createTable from "./js/table.js"
+    createTable();
+</script>
+</body>
+</html>
