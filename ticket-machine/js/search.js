@@ -4,7 +4,7 @@ const searchTable = () => {
 
     const checkRows = () => {
         cityRows.forEach(row => {
-            if(!row.getAttribute("city").toLowerCase().includes(input.value.toLowerCase())) {
+            if(!(row.getAttribute("city").toLowerCase().replace(/\s+/g, '')).includes(input.value.toLowerCase())) {
                 row.classList.add("hide");
             } else {
                 row.classList.remove("hide");
