@@ -1,3 +1,7 @@
+const getUniqueLettersFromVisibleCities = (cities) => {
+    return [...(new Set(cities.join("").toLocaleLowerCase().replace(/\s+/g, '')))].sort();
+}
+
 const addKeyboard = (ticket) => {
     const keyboardIcon = document.querySelector(".display-button");
     const keyboard = document.querySelector(".footer");
@@ -6,6 +10,7 @@ const addKeyboard = (ticket) => {
     const avalibleLettersStart = [...(new Set(ticket.cities.join("").toLocaleLowerCase().replace(/\s+/g, '')))].sort();
     const buttonsWrapper = document.querySelector(".buttons-wrapper");
     const input = document.querySelector("input");
+    const event = new Event("input");
 
     avalibleLettersStart.forEach(letter => {
         buttonsWrapper.innerHTML += `
@@ -18,33 +23,28 @@ const addKeyboard = (ticket) => {
     keyboardButtons.forEach(button => {
         button.addEventListener("click", (e) => {
             input.value += e.currentTarget.innerHTML;
+            input.dispatchEvent(event);
         })
     });
 
-    const checkRows = () => {
-        let rows = [];
-
-        (document.querySelectorAll("tr[city]:not(.hide)")).forEach(row => {
-            rows.push(row.getAttribute("city"));
-        });
-
-        rows = [...(new Set(rows.join("").toLocaleLowerCase().replace(/\s+/g, '')))].sort();
-
+    const disableOrEnableLettersBasedOnAvailableLetters = (letters) => {
         keyboardButtons.forEach(button => {
-            if (!rows.includes(button.innerHTML)) {
-                button.setAttribute("disabled", "")
-            } else {
-                button.removeAttribute("disabled")
+            if (!letters.includes(button.innerHTML)) {
+                return button.setAttribute("disabled", "")
             }
-        })
-
-        requestAnimationFrame(checkRows);
-
+            button.removeAttribute("disabled")
+        });
     }
 
-    checkRows();
+    const checkRows = () => {
+        const visibleCities = [...document.querySelectorAll("tr[city]:not(.hide)")].map(row =>
+            row.getAttribute("city")
+        );
 
+        const avalibleLetters = getUniqueLettersFromVisibleCities(visibleCities);
 
+        disableOrEnableLettersBasedOnAvailableLetters(avalibleLetters);
+    }
 
     keyboardIcon.addEventListener("click", () => {
         console.log(keyboard.classList);
@@ -58,7 +58,12 @@ const addKeyboard = (ticket) => {
     })
 
     backspaceButton.addEventListener("click", () => {
-        input.value = input.value.slice(0, -1);;
+        input.value = input.value.slice(0, -1);
+        input.dispatchEvent(event);
+    })
+
+    input.addEventListener("input", () => {
+        checkRows();
     })
 
 }

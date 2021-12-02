@@ -6,8 +6,6 @@ const searchTable = () => {
         cityRows.forEach(row => {
             showOrHideRowBasedOnSearchInput(row);
         })
-
-        requestAnimationFrame(checkRows);
     }
 
     const showOrHideRowBasedOnSearchInput = (row) => {
@@ -19,7 +17,9 @@ const searchTable = () => {
 
     const doesCityNameContainSearchedValue = (city) => city.toLowerCase().replace(/\s+/g, '').includes(input.value.toLowerCase())
 
-    checkRows();
+    input.addEventListener("input", () => {
+        checkRows();
+    });
 };
 
 export default searchTable;

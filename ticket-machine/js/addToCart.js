@@ -8,8 +8,8 @@ const addTicket = () => {
         prices: addTicketButtons.map(price => {
             return parseFloat(price.getAttribute("price"));
         }),
-        ticketsAmount: Array.from({ length: 50 }, (_, i) => 0),
-        ticketsPrice: Array.from({ length: 50 }, (_, i) => 0),
+        ticketsAmount: new Array(50).fill(0),
+        ticketsPrice: new Array(50).fill(0),
     }
     let count = 0;
 
