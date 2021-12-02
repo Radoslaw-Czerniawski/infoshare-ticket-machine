@@ -4,8 +4,8 @@ import addKeyboard from "./keyboard.js";
 const createTable = () => {
     const button = document.querySelector(".button");
 
-    const renderRows = (users) => {
-        return users.map((user, id)  => {
+    const renderRows = (cities) => {
+        return cities.map((user, id)  => {
             return `
             <tr city="${user.city}">
                 <th>${id+1}</th>
@@ -41,17 +41,16 @@ const createTable = () => {
         document.querySelector(".container").append(div);
     };
 
-    window.addEventListener("load", (e) => {
-        fetch("./data/cities.json")
+    window.addEventListener("load", () => {
+        fetch("../data/cities.json")
             .then((res) => res.json())
             .then((data) => {
-                data.sort((a, b) => (a.distance > b.distance) ? 1 : -1);
+                data.sort((a, b) => a.distance - b.distance);
                 renderTable(data);
+                button.remove();
+                searchTable();
+                addKeyboard(addTicket());
             })
-            .then(() => button.remove())
-            .then(() =>  searchTable())
-            .then(() => addTicket())
-            .then((ticket) => addKeyboard(ticket));
     });
 };
 
