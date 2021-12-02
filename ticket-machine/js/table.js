@@ -42,7 +42,7 @@ const createTable = () => {
     };
 
     window.addEventListener("load", () => {
-        fetch("../data/cities.json")
+        fetch("./data/cities.json")
             .then((res) => res.json())
             .then((data) => {
                 data.sort((a, b) => a.distance - b.distance);
